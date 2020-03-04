@@ -2,6 +2,7 @@
 
 (function () {
   var bigPicture = document.querySelector('.big-picture');
+  var bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
 
   var createCommentsArray = function (commentsAmount) {
     var comments = [];
@@ -34,10 +35,32 @@
 
     bigPicture.querySelector('.social__comment-count').classList.add('hidden');
     bigPicture.querySelector('.comments-loader').classList.add('hidden');
+
+    bigPictureClose.addEventListener('click', onPreviewClose);
+    document.addEventListener('keydown', onPictureEscPress);
+  };
+
+  var openPreview = function (picture) {
+    document.body.classList.add('modal-open');
+    bigPicture.classList.remove('hidden');
+
+    renderBigPicture(picture);
+  };
+
+  var onPictureEscPress = function (evt) {
+    window.utils.isEscEvent(evt, onPreviewClose);
+  };
+
+  var onPreviewClose = function () {
+    document.body.classList.remove('modal-open');
+    bigPicture.classList.add('hidden');
+
+    bigPictureClose.removeEventListener('click', onPreviewClose);
+    document.removeEventListener('keydown', onPictureEscPress);
   };
 
   window.preview = {
     createCommentsArray: createCommentsArray,
-    renderBigPicture: renderBigPicture
+    openPreview: openPreview
   };
 })();

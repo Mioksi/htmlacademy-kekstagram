@@ -3,8 +3,6 @@
 (function () {
   var PICTURES_AMOUNT = 25;
 
-  var picturesContainer = document.querySelector('.pictures');
-
   var pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
   var createPicturesArray = function (picturesAmount) {
@@ -28,6 +26,10 @@
     pictureItem.querySelector('.picture__likes').textContent = picture.likes;
     pictureItem.querySelector('.picture__comments').textContent = picture.comments.length;
 
+    pictureItem.addEventListener('click', function () {
+      window.preview.openPreview(picture);
+    });
+
     return pictureItem;
   };
 
@@ -38,7 +40,7 @@
       fragment.appendChild(generatePicture(pictures[i]));
     }
 
-    picturesContainer.appendChild(fragment);
+    window.utils.picturesContainer.appendChild(fragment);
   };
 
   window.picture = {

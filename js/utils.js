@@ -1,6 +1,16 @@
 'use strict';
 
 (function () {
+  var ESC_KEY = 'Escape';
+
+  var picturesContainer = document.querySelector('.pictures');
+
+  var isEscEvent = function (evt, action) {
+    if (evt.key === ESC_KEY) {
+      action();
+    }
+  };
+
   var getRandomInteger = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -22,8 +32,10 @@
   };
 
   window.utils = {
+    isEscEvent: isEscEvent,
     getRandomInteger: getRandomInteger,
     getRandomElement: getRandomElement,
-    shuffleArray: shuffleArray
+    shuffleArray: shuffleArray,
+    picturesContainer: picturesContainer
   };
 })();
