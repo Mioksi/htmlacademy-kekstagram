@@ -4,6 +4,8 @@
   var ESC_KEY = 'Escape';
 
   var picturesContainer = document.querySelector('.pictures');
+  var imgUploadForm = picturesContainer.querySelector('.img-upload__form');
+  var textHashtags = imgUploadForm.querySelector('.text__hashtags');
 
   var isEscEvent = function (evt, action) {
     if (evt.key === ESC_KEY) {
@@ -36,6 +38,8 @@
     getRandomInteger: getRandomInteger,
     getRandomElement: getRandomElement,
     shuffleArray: shuffleArray,
-    picturesContainer: picturesContainer
+    picturesContainer: picturesContainer,
+    imgUploadForm: imgUploadForm,
+    textHashtags: textHashtags
   };
 })();
