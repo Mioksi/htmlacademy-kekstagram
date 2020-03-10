@@ -5,7 +5,11 @@
 
   var picturesContainer = document.querySelector('.pictures');
   var imgUploadForm = picturesContainer.querySelector('.img-upload__form');
+  var imgUploadOverlay = imgUploadForm.querySelector('.img-upload__overlay');
   var textHashtags = imgUploadForm.querySelector('.text__hashtags');
+
+  var effectLevel = imgUploadOverlay.querySelector('.effect-level');
+  var effectLevelPin = effectLevel.querySelector('.effect-level__pin');
 
   var isEscEvent = function (evt, action) {
     if (evt.key === ESC_KEY) {
@@ -40,6 +44,9 @@
     shuffleArray: shuffleArray,
     picturesContainer: picturesContainer,
     imgUploadForm: imgUploadForm,
-    textHashtags: textHashtags
+    imgUploadOverlay: imgUploadOverlay,
+    textHashtags: textHashtags,
+    effectLevel: effectLevel,
+    effectLevelPin: effectLevelPin
   };
 })();
