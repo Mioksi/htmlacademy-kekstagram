@@ -12,6 +12,17 @@
   var controlSmaller = scale.querySelector('.scale__control--smaller');
   var controlBigger = scale.querySelector('.scale__control--bigger');
 
+  var onError = function (errorMessage) {
+    onFormClose();
+    window.dialog.onError(errorMessage, 'Загрузить другой файл');
+  };
+
+  var onFormSubmit = function (evt) {
+    evt.preventDefault();
+
+    window.backend.save(new FormData(imgUploadForm), window.dialog.onSuccess, onError);
+  };
+
   var onFormClose = function () {
     imgUploadOverlay.classList.add('hidden');
     document.body.classList.remove('modal-open');
@@ -25,6 +36,7 @@
     effectsList.removeEventListener('change', window.effects.onEffectChange);
     controlSmaller.removeEventListener('click', window.scale.onControlSmallerClick);
     controlBigger.removeEventListener('click', window.scale.onControlBiggerClick);
+    imgUploadForm.removeEventListener('submit', onFormSubmit);
     document.removeEventListener('keydown', onFormEscPress);
   };
 
@@ -49,6 +61,11 @@
     effectsList.addEventListener('change', window.effects.onEffectChange);
     controlSmaller.addEventListener('click', window.scale.onControlSmallerClick);
     controlBigger.addEventListener('click', window.scale.onControlBiggerClick);
+    imgUploadForm.addEventListener('submit', onFormSubmit);
     document.addEventListener('keydown', onFormEscPress);
   });
+
+  window.form = {
+    close: onFormClose
+  };
 })();

@@ -20,14 +20,6 @@
     }
   };
 
-  var getRandomInteger = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
-  var getRandomElement = function (array) {
-    return array[Math.floor(Math.random() * array.length)];
-  };
-
   var shuffleArray = function (array) {
     for (var i = array.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -42,8 +34,6 @@
 
   window.utils = {
     isEscEvent: isEscEvent,
-    getRandomInteger: getRandomInteger,
-    getRandomElement: getRandomElement,
     shuffleArray: shuffleArray,
     picturesContainer: picturesContainer,
     imgUploadForm: imgUploadForm,
