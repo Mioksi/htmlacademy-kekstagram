@@ -8,6 +8,10 @@
   var textHashtags = window.utils.textHashtags;
   var effectsList = imgUploadOverlay.querySelector('.effects__list');
 
+  var scale = window.utils.scale;
+  var controlSmaller = scale.querySelector('.scale__control--smaller');
+  var controlBigger = scale.querySelector('.scale__control--bigger');
+
   var onFormClose = function () {
     imgUploadOverlay.classList.add('hidden');
     document.body.classList.remove('modal-open');
@@ -19,6 +23,8 @@
     textHashtags.removeEventListener('change', window.validation.onHashtagChange);
     window.utils.effectLevelPin.removeEventListener('mousedown', window.effects.onPinMove);
     effectsList.removeEventListener('change', window.effects.onEffectChange);
+    controlSmaller.removeEventListener('click', window.scale.onControlSmallerClick);
+    controlBigger.removeEventListener('click', window.scale.onControlBiggerClick);
     document.removeEventListener('keydown', onFormEscPress);
   };
 
@@ -35,10 +41,14 @@
     document.body.classList.add('modal-open');
     window.utils.effectLevel.classList.add('hidden');
 
+    window.scale.resetPictureSize();
+
     imgUploadClose.addEventListener('click', onFormClose);
     textHashtags.addEventListener('change', window.validation.onHashtagChange);
     window.utils.effectLevelPin.addEventListener('mousedown', window.effects.onPinMove);
     effectsList.addEventListener('change', window.effects.onEffectChange);
+    controlSmaller.addEventListener('click', window.scale.onControlSmallerClick);
+    controlBigger.addEventListener('click', window.scale.onControlBiggerClick);
     document.addEventListener('keydown', onFormEscPress);
   });
 })();

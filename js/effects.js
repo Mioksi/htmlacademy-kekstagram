@@ -15,7 +15,7 @@
   var effectLevelDepth = effectLevel.querySelector('.effect-level__depth');
   var effectLevelValue = effectLevel.querySelector('.effect-level__value');
 
-  var imageUploadPreview = window.utils.imgUploadOverlay.querySelector('.img-upload__preview img');
+  var imageUploadPreview = window.utils.imageUploadPreview;
 
   var setDefault = function () {
     effectLevelPin.style.left = DEFAULT_VALUE + '%';
