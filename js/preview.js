@@ -92,6 +92,6 @@
   };
 
   window.preview = {
-    openPreview: openPreview
+    open: openPreview
   };
 })();

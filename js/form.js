@@ -33,7 +33,7 @@
     imgUploadClose.removeEventListener('click', onFormClose);
     textHashtags.removeEventListener('change', window.validation.onHashtagChange);
     window.utils.effectLevelPin.removeEventListener('mousedown', window.effects.onPinMove);
-    effectsList.removeEventListener('change', window.effects.onEffectChange);
+    effectsList.removeEventListener('change', window.effects.onChange);
     controlSmaller.removeEventListener('click', window.scale.onControlSmallerClick);
     controlBigger.removeEventListener('click', window.scale.onControlBiggerClick);
     imgUploadForm.removeEventListener('submit', onFormSubmit);
@@ -58,7 +58,7 @@
     imgUploadClose.addEventListener('click', onFormClose);
     textHashtags.addEventListener('change', window.validation.onHashtagChange);
     window.utils.effectLevelPin.addEventListener('mousedown', window.effects.onPinMove);
-    effectsList.addEventListener('change', window.effects.onEffectChange);
+    effectsList.addEventListener('change', window.effects.onChange);
     controlSmaller.addEventListener('click', window.scale.onControlSmallerClick);
     controlBigger.addEventListener('click', window.scale.onControlBiggerClick);
     imgUploadForm.addEventListener('submit', onFormSubmit);

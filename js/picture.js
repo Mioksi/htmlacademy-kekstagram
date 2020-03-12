@@ -11,7 +11,7 @@
     pictureItem.querySelector('.picture__comments').textContent = picture.comments.length;
 
     pictureItem.addEventListener('click', function () {
-      window.preview.openPreview(picture);
+      window.preview.open(picture);
     });
 
     return pictureItem;

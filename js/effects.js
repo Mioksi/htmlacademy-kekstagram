@@ -93,6 +93,6 @@
   window.effects = {
     onPinMove: onPinMove,
     setDefault: setDefault,
-    onEffectChange: onEffectChange
+    onChange: onEffectChange
   };
 })();
