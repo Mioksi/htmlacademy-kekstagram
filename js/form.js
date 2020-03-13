@@ -29,6 +29,7 @@
 
     imgUploadForm.reset();
     window.effects.setDefault();
+    window.upload.resetPictures();
 
     imgUploadClose.removeEventListener('click', onFormClose);
     textHashtags.removeEventListener('change', window.validation.onHashtagChange);
@@ -48,6 +49,8 @@
 
   uploadFile.addEventListener('change', function (evt) {
     evt.preventDefault();
+
+    window.upload.loadPicture(evt);
 
     imgUploadOverlay.classList.remove('hidden');
     document.body.classList.add('modal-open');
