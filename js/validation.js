@@ -38,6 +38,7 @@
     });
 
     textHashtags.setCustomValidity('');
+    textHashtags.style.border = '';
 
     if (!inputHashtags) {
       return;
@@ -70,7 +71,10 @@
       errors.push('Используйте не более пяти хеш-тегов');
     }
 
-    textHashtags.setCustomValidity(errors.join('. \n'));
+    if (errors.length > 0) {
+      textHashtags.setCustomValidity(errors.join('. \n'));
+      textHashtags.style.border = '2px solid #ff0000';
+    }
   };
 
   window.validation = {
