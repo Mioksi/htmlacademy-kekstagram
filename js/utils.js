@@ -11,6 +11,7 @@
 
   var effectLevel = imgUploadOverlay.querySelector('.effect-level');
   var effectLevelPin = effectLevel.querySelector('.effect-level__pin');
+  var effectLevelLine = effectLevel.querySelector('.effect-level__line');
 
   var scale = imgUploadOverlay.querySelector('.scale');
 
@@ -41,6 +42,7 @@
     textHashtags: textHashtags,
     effectLevel: effectLevel,
     effectLevelPin: effectLevelPin,
+    effectLevelLine: effectLevelLine,
     imageUploadPreview: imageUploadPreview,
     scale: scale
   };

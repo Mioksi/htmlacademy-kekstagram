@@ -11,7 +11,7 @@
 
   var effectLevel = window.utils.effectLevel;
   var effectLevelPin = window.utils.effectLevelPin;
-  var effectLevelLine = effectLevel.querySelector('.effect-level__line');
+  var effectLevelLine = window.utils.effectLevelLine;
   var effectLevelDepth = effectLevel.querySelector('.effect-level__depth');
   var effectLevelValue = effectLevel.querySelector('.effect-level__value');
 
@@ -39,32 +39,32 @@
     }
   };
 
-  var onPinMove = function (evt) {
-    evt.preventDefault();
+  var getEffectValue = function (evt) {
+    var levelLine = effectLevelLine.getBoundingClientRect();
 
-    var startCoords = evt.clientX;
+    var lineCoordX = levelLine.left;
+    var pinCoordX = evt.clientX - lineCoordX;
 
-    var onMouseMove = function (moveEvt) {
-      moveEvt.preventDefault();
+    if (pinCoordX < 0) {
+      pinCoordX = 0;
+    } else if (pinCoordX > effectLevelLine.offsetWidth) {
+      pinCoordX = effectLevelLine.offsetWidth;
+    }
 
-      var shift = startCoords - moveEvt.clientX;
-      var pinCoordX = effectLevelPin.offsetLeft - shift;
+    var currentEffectValue = pinCoordX / effectLevelLine.offsetWidth;
 
-      startCoords = moveEvt.clientX;
+    effectLevelPin.style.left = pinCoordX + 'px';
+    effectLevelDepth.style.width = Math.round(currentEffectValue * 100) + '%';
+    effectLevelValue.value = Math.round(currentEffectValue * 100);
 
-      if (pinCoordX < 0) {
-        pinCoordX = 0;
-      } else if (pinCoordX > effectLevelLine.offsetWidth) {
-        pinCoordX = effectLevelLine.offsetWidth;
-      }
+    applyEffect(currentEffectValue);
+  };
 
-      var currentEffectValue = pinCoordX / effectLevelLine.offsetWidth;
+  var onPinMove = function () {
+    var onMouseMove = function (evt) {
+      evt.preventDefault();
 
-      effectLevelPin.style.left = pinCoordX + 'px';
-      effectLevelDepth.style.width = Math.round(currentEffectValue * 100) + '%';
-      effectLevelValue.value = Math.round(currentEffectValue * 100);
-
-      applyEffect(currentEffectValue);
+      getEffectValue(evt);
     };
 
     var onMouseUp = function (upEvt) {
@@ -76,6 +76,12 @@
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
+  };
+
+  var onLineClick = function (evt) {
+    evt.preventDefault();
+
+    getEffectValue(evt);
   };
 
   var applyEffect = function (currentEffectValue) {
@@ -92,6 +98,7 @@
 
   window.effects = {
     onPinMove: onPinMove,
+    onLineClick: onLineClick,
     setDefault: setDefault,
     onChange: onEffectChange
   };
