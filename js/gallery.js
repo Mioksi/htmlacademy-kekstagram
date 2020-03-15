@@ -39,9 +39,9 @@
   };
 
   var showRandomPictures = function () {
-    var randomPictures = pictures.slice();
+    var picturesCopy = pictures.slice();
 
-    window.utils.shuffleArray(randomPictures).splice(0, NEW_PICTURES_AMOUNT);
+    var randomPictures = window.utils.shuffleArray(picturesCopy).slice(0, NEW_PICTURES_AMOUNT);
 
     window.picture.render(randomPictures);
   };
